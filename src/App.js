@@ -8,24 +8,37 @@ class App extends React.Component {
     super(props);
     this.state = {
       workTime: 110,
-      breakTime: 5,
+      breakTime: 115,
       play: true,
       restore: true,
     };
 
     this.handleTimerControls = this.handleTimerControls.bind(this);
     this.handleWorkController = this.handleWorkController.bind(this);
+    this.handleBreakController = this.handleBreakController.bind(this);
   }
 
   handleWorkController = (event) => {
     const { id } = event.target;
     const { workTime } = this.state;
-    // console.log(id);
+
     if (id === 'plus' && workTime < 120) {
       this.setState({ workTime: workTime + 1 });
     }
     if (id === 'subtract' && workTime > 0) {
       this.setState({ workTime: workTime - 1 });
+    }
+  };
+
+  handleBreakController = (event) => {
+    const { id } = event.target;
+    const { breakTime } = this.state;
+
+    if (id === 'plus' && breakTime < 120) {
+      this.setState({ breakTime: breakTime + 1 });
+    }
+    if (id === 'subtract' && breakTime > 0) {
+      this.setState({ breakTime: breakTime - 1 });
     }
   };
 
@@ -79,6 +92,7 @@ class App extends React.Component {
           restore={restore}
           handleTimerControls={this.handleTimerControls}
           handleWorkController={this.handleWorkController}
+          handleBreakController={this.handleBreakController}
         />
       </div>
     );
