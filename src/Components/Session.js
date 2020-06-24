@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
-function Session() {
-  const [sessionLengthInSeconds, setsessionLengthInSeconds] = useState(60 * 25); // 25min in sec
-
-  const handleDecrementSessionLength = () => {
-    const newsessionLengthInSeconds = sessionLengthInSeconds - 60;
-    if (newsessionLengthInSeconds < 0) {
-      setsessionLengthInSeconds(0);
-    } else {
-      setsessionLengthInSeconds(newsessionLengthInSeconds);
-    }
-  };
-
-  const handleIncrementSessionLength = () => {
-    setsessionLengthInSeconds(sessionLengthInSeconds + 60);
-  };
+function Session(props) {
+  const {
+    handleDecrementSessionLength,
+    handleIncrementSessionLength,
+    sessionLengthInSeconds,
+  } = props;
 
   const sessionLengthInMinutes = moment
     .duration(sessionLengthInSeconds, 's')
@@ -44,5 +36,11 @@ function Session() {
     </div>
   );
 }
+
+Session.propTypes = {
+  handleDecrementSessionLength: PropTypes.number.isRequired,
+  handleIncrementSessionLength: PropTypes.number.isRequired,
+  sessionLengthInSeconds: PropTypes.number.isRequired,
+};
 
 export default Session;
