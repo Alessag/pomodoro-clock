@@ -1,26 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
-function Break() {
-  const [breakLengthInSeconds, setBreakLengthInSeconds] = useState(300); // 5min in sec
-
-  const handleDecrementBreakLength = () => {
-    const newBreakLengthInSeconds = breakLengthInSeconds - 60;
-    if (newBreakLengthInSeconds < 0) {
-      setBreakLengthInSeconds(0);
-    } else {
-      setBreakLengthInSeconds(newBreakLengthInSeconds);
-    }
-  };
-
-  const handleIncrementBreakLength = () => {
-    setBreakLengthInSeconds(breakLengthInSeconds + 60);
-  };
+function Break(props) {
+  const {
+    breakLengthInSeconds,
+    handleDecrementBreakLength,
+    handleIncrementBreakLength,
+  } = props;
 
   const breakLengthInMinutes = moment
     .duration(breakLengthInSeconds, 's')
     .minutes();
-
   return (
     <div>
       <h1 id='break-label'>Break Lenght</h1>
@@ -44,5 +35,11 @@ function Break() {
     </div>
   );
 }
+
+Break.propTypes = {
+  breakLengthInSeconds: PropTypes.number.isRequired,
+  handleDecrementBreakLength: PropTypes.number.isRequired,
+  handleIncrementBreakLength: PropTypes.number.isRequired,
+};
 
 export default Break;
