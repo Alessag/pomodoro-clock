@@ -1,17 +1,19 @@
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
-import React from 'react';
-import PropTypes from 'prop-types';
 import './styles/index.css';
 
 momentDurationFormatSetup(moment);
 
 function TimeLeft({ sessionLengthInSeconds }) {
-  // const [timeLeft] = useState(sessionLengthInSeconds);
+  const [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
 
-  const formattedTimeLeft = moment
-    .duration(sessionLengthInSeconds, 's')
-    .format('mm:ss');
+  useEffect(() => {
+    setTimeLeft(sessionLengthInSeconds);
+  }, [sessionLengthInSeconds]);
+
+  const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss');
 
   return (
     <div className='timer'>
