@@ -1,33 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IoMdInformationCircleOutline } from 'react-icons/io';
+import { MdReplay } from 'react-icons/md';
+import { GrPlayFill } from 'react-icons/gr';
+import { BsFillPauseFill } from 'react-icons/bs';
+import './styles/index.css';
 
-function Controls(props) {
-  const { workTime, breakTime } = props;
+function Controls({ isStarted, handleStartStopClick, handleResetButtonClick }) {
   return (
-    <div>
-      <h1>App controls</h1>
-      <div>
-        <button type='button' id='reset'>
-          Reset
-        </button>
-        <button type='button' id='start_stop'>
-          Play/Pause
-        </button>
-        <button type='button' id='info'>
-          Info
-        </button>
-      </div>
-      <div>
-        <button type='button'>{workTime}</button>
-        <button type='button'>{breakTime}</button>
-      </div>
+    <div className='controls'>
+      <button
+        type='button'
+        id='reset'
+        className='controls__btn'
+        onClick={handleResetButtonClick}
+      >
+        <MdReplay id='reset' className='controls__icons' />
+      </button>
+
+      <button
+        onClick={handleStartStopClick}
+        type='button'
+        id='start_stop'
+        className='controls__btn controls__btn-md'
+      >
+        {isStarted ? (
+          <BsFillPauseFill id='start_stop' className='controls__icons' />
+        ) : (
+          <GrPlayFill id='start_stop' className='controls__icons' />
+        )}
+      </button>
+
+      <button type='button' id='info' className='controls__btn'>
+        <IoMdInformationCircleOutline id='info' className='controls__icons' />
+      </button>
     </div>
   );
 }
 
 Controls.propTypes = {
-  workTime: PropTypes.number.isRequired,
-  breakTime: PropTypes.number.isRequired,
+  isStarted: PropTypes.string.isRequired,
+  handleStartStopClick: PropTypes.func.isRequired,
+  handleResetButtonClick: PropTypes.func.isRequired,
 };
-
 export default Controls;
