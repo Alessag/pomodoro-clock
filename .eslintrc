@@ -6,6 +6,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "airbnb",
     "prettier"
   ],
@@ -20,7 +21,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "babel"],
+  "plugins": ["react", "prettier", "babel", "react-hooks"],
   "parser": "babel-eslint",
   "rules": {
     "react/jsx-one-expression-per-line": [
@@ -49,6 +50,8 @@
       {
         "semi": true
       }
-    ]
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
