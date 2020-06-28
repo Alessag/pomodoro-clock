@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 function Session(props) {
   const {
-    handleDecrementSessionLength,
-    handleIncrementSessionLength,
     sessionLengthInSeconds,
+    handleIncrementSessionLength,
+    handleDecrementSessionLength,
   } = props;
 
   const sessionLengthInMinutes = moment
@@ -15,7 +15,7 @@ function Session(props) {
 
   return (
     <div>
-      <h1 id='session-label'>WorkController - Session Label</h1>
+      <h1 id='session-label'>Work</h1>
       <button
         id='session-increment'
         type='button'
@@ -38,9 +38,9 @@ function Session(props) {
 }
 
 Session.propTypes = {
-  handleDecrementSessionLength: PropTypes.number.isRequired,
-  handleIncrementSessionLength: PropTypes.number.isRequired,
   sessionLengthInSeconds: PropTypes.number.isRequired,
+  handleIncrementSessionLength: PropTypes.func.isRequired,
+  handleDecrementSessionLength: PropTypes.func.isRequired,
 };
 
 export default Session;
