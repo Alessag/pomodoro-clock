@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 function Break(props) {
   const {
     breakLengthInSeconds,
-    handleDecrementBreakLength,
     handleIncrementBreakLength,
+    handleDecrementBreakLength,
   } = props;
 
   const breakLengthInMinutes = moment
@@ -14,7 +14,7 @@ function Break(props) {
     .minutes();
   return (
     <div>
-      <h1 id='break-label'>Break Lenght</h1>
+      <h1 id='break-label'>Break</h1>
       <button
         type='button'
         id='break-increment'
@@ -38,8 +38,8 @@ function Break(props) {
 
 Break.propTypes = {
   breakLengthInSeconds: PropTypes.number.isRequired,
-  handleDecrementBreakLength: PropTypes.number.isRequired,
-  handleIncrementBreakLength: PropTypes.number.isRequired,
+  handleDecrementBreakLength: PropTypes.func.isRequired,
+  handleIncrementBreakLength: PropTypes.func.isRequired,
 };
 
 export default Break;
