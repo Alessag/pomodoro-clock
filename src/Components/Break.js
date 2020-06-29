@@ -11,7 +11,7 @@ function Break(props) {
 
   const breakLengthInMinutes = moment
     .duration(breakLengthInSeconds, 's')
-    .minutes();
+    .asMinutes();
   return (
     <div>
       <h1 id='break-label'>Break</h1>

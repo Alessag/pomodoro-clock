@@ -11,7 +11,7 @@ function Session(props) {
 
   const sessionLengthInMinutes = moment
     .duration(sessionLengthInSeconds, 's')
-    .minutes();
+    .asMinutes();
 
   return (
     <div>
@@ -24,7 +24,7 @@ function Session(props) {
         {' '}
         +{' '}
       </button>
-      <span>{sessionLengthInMinutes}</span>
+      <span id='session-length'>{sessionLengthInMinutes}</span>
       <button
         id='session-decrement'
         type='button'
