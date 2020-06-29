@@ -14,18 +14,23 @@ function App() {
   const [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
   const isStarted = intervalId !== null;
 
+  useEffect(() => {
+    setTimeLeft(sessionLengthInSeconds);
+  }, [sessionLengthInSeconds]);
+
   /**
    * Session Lenght methods
    */
   const handleIncrementSessionLength = () => {
-    setSessionLengthInSeconds(sessionLengthInSeconds + 60);
+    const newIncrementSession = sessionLengthInSeconds + 60;
+    if (newIncrementSession <= 60 * 60) {
+      setSessionLengthInSeconds(newIncrementSession);
+    }
   };
 
   const handleDecrementSessionLength = () => {
     const newSessionLengthInSeconds = sessionLengthInSeconds - 60;
-    if (newSessionLengthInSeconds < 0) {
-      setSessionLengthInSeconds(0);
-    } else {
+    if (newSessionLengthInSeconds > 0) {
       setSessionLengthInSeconds(newSessionLengthInSeconds);
     }
   };
@@ -34,14 +39,15 @@ function App() {
    * Break Lenght Methods
    */
   const handleIncrementBreakLength = () => {
-    setBreakLengthInSeconds(breakLengthInSeconds + 60);
+    const newBreakLength = breakLengthInSeconds + 60;
+    if (newBreakLength <= 60 * 60) {
+      setBreakLengthInSeconds(newBreakLength);
+    }
   };
 
   const handleDecrementBreakLength = () => {
     const newBreakLengthInSeconds = breakLengthInSeconds - 60;
-    if (newBreakLengthInSeconds < 0) {
-      setBreakLengthInSeconds(0);
-    } else {
+    if (newBreakLengthInSeconds > 0) {
       setBreakLengthInSeconds(newBreakLengthInSeconds);
     }
   };
@@ -58,17 +64,18 @@ function App() {
         setTimeLeft((prevTimeLeft) => {
           const newTimeLeft = prevTimeLeft - 1;
           if (newTimeLeft >= 0) {
-            return prevTimeLeft - 1;
+            return newTimeLeft;
           }
 
           audioElement.current.play();
 
           if (currentSessionType === 'Session') {
             setCurrentSessionType('Break');
-            setTimeLeft(breakLengthInSeconds);
-          } else if (currentSessionType === 'Break') {
+            return breakLengthInSeconds;
+          }
+          if (currentSessionType === 'Break') {
             setCurrentSessionType('Session');
-            setTimeLeft(sessionLengthInSeconds);
+            return sessionLengthInSeconds;
           }
           return prevTimeLeft;
         });
@@ -85,26 +92,15 @@ function App() {
     clearInterval(intervalId);
     setIntervalId(null);
     setCurrentSessionType('Session');
-    setBreakLengthInSeconds(300);
     setSessionLengthInSeconds(60 * 25);
+    setBreakLengthInSeconds(300);
     setTimeLeft(60 * 25);
   };
-
-  useEffect(() => {
-    setTimeLeft(sessionLengthInSeconds);
-  }, [sessionLengthInSeconds]);
 
   return (
     <div className='app'>
       <h1 className='app__title'>Pomodoro Clock</h1>
-      <TimeLeft
-        timeLeft={timeLeft}
-        timerLabel={currentSessionType}
-        isStarted={isStarted}
-        sessionLengthInSeconds={sessionLengthInSeconds}
-        breakLengthInSeconds={breakLengthInSeconds}
-        handleStartStopClick={handleStartStopClick}
-      />
+      <TimeLeft timeLeft={timeLeft} timerLabel={currentSessionType} />
       <Session
         sessionLengthInSeconds={sessionLengthInSeconds}
         handleIncrementSessionLength={handleIncrementSessionLength}
