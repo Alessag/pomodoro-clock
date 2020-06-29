@@ -3,7 +3,7 @@ import TimeLeft from './Components/TimeLeft';
 import Session from './Components/Session';
 import Break from './Components/Break';
 import Controls from './Components/Controls';
-import './App.css';
+import './assets/main.css';
 
 function App() {
   const audioElement = useRef(null);
