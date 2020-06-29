@@ -4,7 +4,6 @@ import { IoMdInformationCircleOutline } from 'react-icons/io';
 import { MdReplay } from 'react-icons/md';
 import { GrPlayFill } from 'react-icons/gr';
 import { BsFillPauseFill } from 'react-icons/bs';
-import './styles/index.css';
 
 function Controls({ isStarted, handleStartStopClick, handleResetButtonClick }) {
   return (
