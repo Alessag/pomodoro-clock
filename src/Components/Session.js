@@ -1,6 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import {
+  BreakSessionContainer,
+  BreakSessionLabel,
+  BreakSessionButton,
+  BreakSessionTime,
+  PlusMinusButtonContainer,
+} from '../ui/BreakSessionUi';
 
 function Session(props) {
   const {
@@ -14,26 +21,30 @@ function Session(props) {
     .asMinutes();
 
   return (
-    <div>
-      <h1 id='session-label'>Work</h1>
-      <button
-        id='session-increment'
-        type='button'
-        onClick={handleIncrementSessionLength}
-      >
-        {' '}
-        +{' '}
-      </button>
-      <span id='session-length'>{sessionLengthInMinutes}</span>
-      <button
-        id='session-decrement'
-        type='button'
-        onClick={handleDecrementSessionLength}
-      >
-        {' '}
-        -{' '}
-      </button>
-    </div>
+    <BreakSessionContainer>
+      <BreakSessionLabel id='session-label'>Work</BreakSessionLabel>
+      <PlusMinusButtonContainer>
+        <BreakSessionButton
+          id='session-decrement'
+          type='button'
+          onClick={handleDecrementSessionLength}
+        >
+          {' '}
+          -{' '}
+        </BreakSessionButton>
+        <BreakSessionTime id='session-length'>
+          {sessionLengthInMinutes}
+        </BreakSessionTime>
+        <BreakSessionButton
+          id='session-increment'
+          type='button'
+          onClick={handleIncrementSessionLength}
+        >
+          {' '}
+          +{' '}
+        </BreakSessionButton>
+      </PlusMinusButtonContainer>
+    </BreakSessionContainer>
   );
 }
 
