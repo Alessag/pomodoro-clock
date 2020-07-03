@@ -235,6 +235,8 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
+      title: ['Yellowtail'],
+      clock: ['Hind Siliguri'],
       sans: [
         'system-ui',
         '-apple-system',
