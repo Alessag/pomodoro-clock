@@ -98,19 +98,23 @@ function App() {
   };
 
   return (
-    <div className='app'>
-      <h1 className='app__title'>Pomodoro Clock</h1>
+    <div className='font-clock flex flex-col h-screen items-center justify-center bg-red-500'>
+      <h1 className='fixed top-0 left-0 ml-1 text-4xl font-title'>
+        Pomodoro Clock
+      </h1>
       <TimeLeft timeLeft={timeLeft} timerLabel={currentSessionType} />
-      <Session
-        sessionLengthInSeconds={sessionLengthInSeconds}
-        handleIncrementSessionLength={handleIncrementSessionLength}
-        handleDecrementSessionLength={handleDecrementSessionLength}
-      />
-      <Break
-        breakLengthInSeconds={breakLengthInSeconds}
-        handleIncrementBreakLength={handleIncrementBreakLength}
-        handleDecrementBreakLength={handleDecrementBreakLength}
-      />
+      <div className='flex'>
+        <Session
+          sessionLengthInSeconds={sessionLengthInSeconds}
+          handleIncrementSessionLength={handleIncrementSessionLength}
+          handleDecrementSessionLength={handleDecrementSessionLength}
+        />
+        <Break
+          breakLengthInSeconds={breakLengthInSeconds}
+          handleIncrementBreakLength={handleIncrementBreakLength}
+          handleDecrementBreakLength={handleDecrementBreakLength}
+        />
+      </div>
       <Controls
         isStarted={isStarted}
         handleStartStopClick={handleStartStopClick}
