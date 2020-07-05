@@ -21,7 +21,7 @@ function Session(props) {
     .asMinutes();
 
   return (
-    <BreakSessionContainer>
+    <BreakSessionContainer className='mr-20'>
       <BreakSessionLabel id='session-label'>Work</BreakSessionLabel>
       <PlusMinusButtonContainer>
         <BreakSessionButton
