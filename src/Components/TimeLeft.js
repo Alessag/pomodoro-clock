@@ -11,10 +11,12 @@ function TimeLeft({ timeLeft, timerLabel }) {
     .format('mm:ss', { trim: false });
 
   return (
-    <div className='timer'>
-      <h1 id='timer-label'>{timerLabel}</h1>
-      <span className='timer__sesion'>Work</span>
-      <span id='time-left' className='timer__countdown'>
+    <div className='timer flex flex-col justify-center items-center w-48 h-48 rounded-full border-white  border-2  mb-4'>
+      <h1 id='timer-label' className='font-light'>
+        {timerLabel}
+      </h1>
+      {/* <span className='timer__sesion'>Work</span> */}
+      <span id='time-left' className='text-5xl font-light'>
         {formattedTimeLeft}
       </span>
     </div>
@@ -23,6 +25,6 @@ function TimeLeft({ timeLeft, timerLabel }) {
 
 TimeLeft.propTypes = {
   timeLeft: PropTypes.number.isRequired,
-  timerLabel: PropTypes.number.isRequired,
+  timerLabel: PropTypes.string.isRequired,
 };
 export default TimeLeft;
