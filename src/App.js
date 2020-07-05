@@ -12,6 +12,7 @@ function App() {
   const [currentSessionType, setCurrentSessionType] = useState('Session'); // Session or Break
   const [intervalId, setIntervalId] = useState(null);
   const [timeLeft, setTimeLeft] = useState(sessionLengthInSeconds);
+  const [showModal, setShowModal] = useState(false);
   const isStarted = intervalId !== null;
 
   useEffect(() => {
@@ -97,13 +98,24 @@ function App() {
     setTimeLeft(60 * 25);
   };
 
+  /**
+   * Handle Info Button
+   */
+  const handleInfoButtonClick = () => {
+    if (showModal) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  };
+
   return (
-    <div className='font-clock flex flex-col h-screen items-center justify-center bg-red-500'>
+    <div className='font-clock flex flex-col h-screen items-center justify-center bg-red-500 text-white'>
       <h1 className='fixed top-0 left-0 ml-1 text-4xl font-title'>
         Pomodoro Clock
       </h1>
       <TimeLeft timeLeft={timeLeft} timerLabel={currentSessionType} />
-      <div className='flex'>
+      <div className='flex mb-12'>
         <Session
           sessionLengthInSeconds={sessionLengthInSeconds}
           handleIncrementSessionLength={handleIncrementSessionLength}
@@ -119,6 +131,8 @@ function App() {
         isStarted={isStarted}
         handleStartStopClick={handleStartStopClick}
         handleResetButtonClick={handleResetButtonClick}
+        handleInfoButtonClick={handleInfoButtonClick}
+        showModal={showModal}
       />
       <audio id='beep' ref={audioElement}>
         <source
