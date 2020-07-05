@@ -22,7 +22,7 @@ export const BreakSessionButton = ({ children, ...props }) => {
   return (
     <button
       type='button'
-      className='w-6 h-6 items-center justify-center ml-2 mr-2'
+      className='w-6 h-6 items-center justify-center ml-2 mr-2 border-solid border border-white rounded-sm'
       {...props}
     >
       {children}
