@@ -9,8 +9,8 @@ import {
 
 function Modal({ handleInfoButtonClick }) {
   return (
-    <div className='max-w-sm w-full lg:max-w-full lg:flex'>
-      <div className='border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal'>
+    <div className='modal fixed block top-0 left-0 bottom-0 w-full h-full z-10 items-baseline'>
+      <div className='border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal absolute left-0 right-0 overflow-hidden my-20 mx-auto lg:w-1/4 w-3/4 z-40'>
         <div className='mb-8'>
           <div className='flex justify-end'>
             <button type='button'>
@@ -54,6 +54,7 @@ function Modal({ handleInfoButtonClick }) {
           </div>
         </div>
       </div>
+      <div className='modal__overlay w-full h-full z-10 bg-gray-100 opacity-75' />
     </div>
   );
 }
