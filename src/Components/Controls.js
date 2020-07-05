@@ -18,7 +18,7 @@ function Controls({
         type='button'
         id='reset'
         onClick={handleResetButtonClick}
-        className='flex items-center justify-center w-12 h-12 border-solid border border-white rounded-full'
+        className='flex items-center justify-center w-12 h-12 border-solid border-2 border-secondary hover:border-white rounded-full'
       >
         <MdReplay id='reset' className='text-center' />
       </button>
@@ -26,7 +26,7 @@ function Controls({
         onClick={handleStartStopClick}
         type='button'
         id='start_stop'
-        className='w-16 h-16 border-solid border border-white rounded-full m-6 flex items-center justify-center'
+        className='w-16 h-16 border-solid border-2 border-secondary hover:border-white rounded-full m-6 flex items-center justify-center'
       >
         {isStarted ? (
           <BsFillPauseFill id='start_stop' />
@@ -38,7 +38,7 @@ function Controls({
         onClick={handleInfoButtonClick}
         type='button'
         id='info'
-        className='flex items-center justify-center w-12 h-12 border-solid border border-white rounded-full'
+        className='flex items-center justify-center w-12 h-12 border-solid border-2 border-secondary hover:border-white rounded-full'
       >
         <IoMdInformationCircleOutline id='info' />
       </button>
