@@ -80,7 +80,7 @@ function App() {
           }
           return prevTimeLeft;
         });
-      }, 10);
+      }, 1000);
       setIntervalId(newIntervalId);
     }
   };
