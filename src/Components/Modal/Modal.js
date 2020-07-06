@@ -39,15 +39,24 @@ function Modal({ handleInfoButtonClick }) {
             <p className='text-gray-900 leading-none'>Alessandra Amicarella</p>
             <div className='text-gray-600 flex mt-2'>
               <a
-                href='www.linkedin.com/in/alessandraamicarella'
+                href='https://www.linkedin.com/in/alessandraamicarella'
                 target='_blank'
+                rel='noreferrer'
               >
                 <AiFillLinkedin size='1.5rem' className='mr-2' />
               </a>
-              <a href='www.github.com/Alessag' target='_blank'>
+              <a
+                href='https://www.github.com/Alessag'
+                target='_blank'
+                rel='noreferrer'
+              >
                 <AiFillGithub size='1.5rem' className='mr-2' />
               </a>
-              <a href='www.instagram.com/amicarellaa' target='_blank'>
+              <a
+                href='https://www.instagram.com/amicarellaa'
+                target='_blank'
+                rel='noreferrer'
+              >
                 <AiOutlineInstagram size='1.5rem' className='mr-2' />
               </a>
             </div>
