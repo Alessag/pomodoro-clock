@@ -15,7 +15,6 @@ function TimeLeft({ timeLeft, timerLabel }) {
       <h1 id='timer-label' className='font-light'>
         {timerLabel}
       </h1>
-      {/* <span className='timer__sesion'>Work</span> */}
       <span id='time-left' className='text-5xl font-light'>
         {formattedTimeLeft}
       </span>
